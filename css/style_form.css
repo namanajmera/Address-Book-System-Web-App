@@ -25,8 +25,8 @@ body {
 }
 
 .logo {
-   width: 40px;
-   height: 40px;
+   width: 45px;
+   height: 45px;
    border: solid 0px #42515f;
 }
 
@@ -38,11 +38,180 @@ body {
    text-transform: capitalize;
 }
 
-.address-payroll {
+.address-book {
    font: normal normal bold 22px/25px Montserrat;
    color: #42515f;
 }
 
 * {
    box-sizing: border-box;
+}
+
+.form-content {
+   min-height: calc(100% - 80px);
+   background-color: #f7f7f7;
+   margin-bottom: 30px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border: 0px solid green;
+}
+
+.form-head-container {
+   display: flex;
+   justify-content: space-between;
+   /* align-items: ; */
+   width: 100%;
+   padding: 30px 10px;
+   background: #008CFF 0% 0% no-repeat padding-box;
+   box-shadow: 0px 3px 6px #00000029;
+   border: 1px solid #f5f5f5;
+   border-radius: 8px;
+   opacity: 1;
+}
+
+.close {
+   width: 44px;
+   height: 44px;
+   background: 0% 0% no-repeat padding-box;
+   opacity: 1;
+   cursor: pointer;
+}
+
+.form-head {
+   display: block;
+   margin-left: 30%;
+   font: normal normal normal 28px/37px Roboto;
+   letter-spacing: 0px;
+   color: #FFFFFF;
+   text-transform: uppercase;
+   opacity: 1;
+}
+
+.form {
+   margin-top: 20px;
+   width: 900px;
+   height: 803px;
+   background: #ffffff 0% 0% no-repeat padding-box;
+   box-shadow: 0px 3px 6px #00000029;
+   border: 1px solid #f5f5f5;
+   border-radius: 8px;
+   opacity: 1;
+}
+
+.row-content {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   /* align-items: center; */
+   margin-top: 25px;
+   margin-bottom: 10px;
+   border: 0px solid green;
+}
+
+.label {
+   min-width: 140px;
+}
+
+label {
+   padding: 12px 12px 12px 50px;
+   margin-left: 30px;
+   display: block;
+}
+
+.text {
+   font-size: 16px;
+   color: #42515f;
+   opacity: 1;
+   font: normal normal normal 18px/24px Roboto;
+}
+
+.text-error {
+   color: red;
+   margin-left: 10px;
+   font-size: 12px;
+   font-style: italic;
+}
+
+input, textarea {
+   margin-left: 80px;
+   width: 700px;
+   height: 50px;
+   padding: 10px;
+   border-radius: 4px;
+   resize: vertical;
+   background: #FFFFFF 0% 0% no-repeat padding-box;
+   border: 1px solid #BDBDBD;
+   box-shadow: 1px 1px gray;
+   border-radius: 3px;
+   opacity: 1;
+}
+
+select {
+   width: 180px;
+   height: 50px;
+   margin-left: 80px;
+   padding: 12px;
+   border: 1px solid #ccc;
+   border-radius: 4px;
+   resize: vertical;
+   font: normal normal normal 16px Roboto;
+   letter-spacing: 0px;
+   color: #42515f;
+   background-color: transparent;
+}
+
+.sub-address {
+   display: flex;
+   flex-direction: row;
+}
+
+.zipCode {
+   width: 180px;
+   height: 50px;
+}
+
+.button-parent {
+   display: flex;
+   justify-content: space-evenly;
+   margin-top: 50px;
+   margin-bottom: 10px;
+   margin-left: 200px;
+   margin-right: 50px;
+   /* margin-top: 20px; */
+}
+
+.button {
+   width: 100px;
+   height: 40px;
+   background: transparent;
+   font-weight: 400;
+   opacity: 1;
+   min-width: 140px;
+   font-size: 15px;
+   padding: 7px 7px;
+   font-family: Roboto;
+   color: #42515F;
+   border: 1px solid #969696;
+   background: #E2E2E2 0% 0% no-repeat padding-box;
+   cursor: pointer;
+   border-radius: 5px;
+}
+
+.sumbitButton {
+   margin-right: 30px;
+}
+
+.cancelButton {
+   padding-top: 8px;
+   text-decoration: none;
+   text-align: center;
+}
+
+.cancelButton:hover, .resetButton:hover {
+   background-color: grey;
+}
+
+.sumbitButton:hover {
+   background-color: #82A70C;
 }

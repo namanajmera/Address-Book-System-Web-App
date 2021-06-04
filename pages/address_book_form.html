@@ -7,6 +7,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="/css/style_form.css">
    <script src="/js/script_form.js"></script>
+   <script src="/js/AddressBookSystem.js"></script>
    <title>Address Book System</title>
 </head>
 
@@ -32,7 +33,7 @@
          <div class="row-content">
             <label class="label text" for="name">Full Name</label>
             <input class="input" type="text" id="name" name="name" placeholder="Enter your name.." required>
-            <error-output class="text-error" for="text"></error-output>
+            <error-output class="text-error" for="name"></error-output>
          </div>
 
          <div class="row-content">
@@ -45,24 +46,10 @@
          <div class="row-content">
             <label class="label text" for="address">Address</label>
             <textarea name="address" id="address" cols="15" rows="15" style="width: 700px; height: 96px;"
-               placeholder="Enter your address..."></textarea>
+               placeholder="Enter your address..." required></textarea>
          </div>
 
          <div class="row-contents sub-address">
-            <div class="city">
-               <label for="city" class="label text">City</label>
-               <select name="city" id="city" class="form-control">
-                  <option value="none" selected disabled hidden>Select an Option</option>
-                  <option value="Andhra Pradesh">Delhi</option>
-                  <option value="Andaman and Nicobar Islands">Bangalore</option>
-                  <option value="Arunachal Pradesh">Hyderabad</option>
-                  <option value="Arunachal Pradesh">Jaipur</option>
-                  <option value="Assam">Ahmedabad</option>
-                  <option value="Bihar">Chennai</option>
-                  <option value="Chandigarh">Kolkata</option>
-               </select>
-            </div>
-
             <div class="state">
                <label for="state" class="label text">State</label>
                <select name="state" id="state" class="form-control">
@@ -105,10 +92,26 @@
                   <option value="West Bengal">West Bengal</option>
                </select>
             </div>
+            <div class="city">
+               <label for="city" class="label text">City</label>
+               <select name="city" id="city" class="form-control">
+                  <option value="none" selected disabled hidden>Select an Option</option>
+                  <option value="Andhra Pradesh">Delhi</option>
+                  <option value="Andaman and Nicobar Islands">Bangalore</option>
+                  <option value="Arunachal Pradesh">Hyderabad</option>
+                  <option value="Jaipur">Jaipur</option>
+                  <option value="Assam">Ahmedabad</option>
+                  <option value="Bihar">Chennai</option>
+                  <option value="Chandigarh">Kolkata</option>
+               </select>
+            </div>
+
+
 
             <div class="zipCode">
                <label for="zip" class="label text">Zip Code</label>
-               <input type="number" name="zipCode" id="zip" class="zipCode" placeholder="Enter zip number...">
+               <input type="number" name="zipCode" id="zip" class="zipCode" placeholder="Enter zip number..." required>
+               <error-output class="text-error" for="zip"></error-output>
             </div>
          </div>
 

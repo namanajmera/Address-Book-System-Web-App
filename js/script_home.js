@@ -42,3 +42,15 @@ const createInnerHTML = () => {
       document.querySelector("#display").innerHTML = innerHTML;
    }
 }
+
+
+const remove = (node) => {
+   let addressBookData = addressBookList.find(contact => contact._id == node.id)
+   if (!addressBookData) return
+   const index = addressBookList.map(contact => contact._id)
+      .indexOf(addressBookData._id);
+   addressBookList.splice(index, 1);
+   localStorage.setItem("AddressBookList", JSON.stringify(addressBookList))
+   document.querySelector(".address-count").innerHTML = addressBookList.length;
+   createInnerHTML();
+}

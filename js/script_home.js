@@ -1,0 +1,44 @@
+let addressBookList;
+window.addEventListener("DOMContentLoaded", (event) => {
+   addressBookList = getAddressDateFromStorage();
+   document.querySelector(".address-count").innerHTML = addressBookList.length;
+   createInnerHTML();
+})
+
+const getAddressDateFromStorage = () => {
+   return localStorage.getItem("AddressBookList") ? JSON.parse(localStorage.getItem("AddressBookList")) : [];
+}
+
+const createInnerHTML = () => {
+   const headerHTML = `
+         <th>Full Name</th>
+         <th>Address</th>
+         <th>City</th>
+         <th>State</th>
+         <th>Zip Code</th>
+         <th>Phone Number</th>
+         <th></th>
+   `
+
+   if (addEventListener.length == 0)
+      return
+
+   let innerHTML = `${headerHTML}`
+   for (const contact of addressBookList) {
+      innerHTML = `${innerHTML}
+            <tr>
+               <td>${contact._fullName}</td>
+               <td>${contact._address}</td>
+               <td>${contact._city}</td>
+               <td>${contact._state}</td>
+               <td>${contact._zip}</td>
+               <td>${contact._phoneNumber}</td>
+               <td>
+                  <img id="${contact._id}" src="/assets/delete_black_24dp.svg" alt="delete" class="actions" onclick="remove(this)">
+                  <img id="${contact._id}" src="/assets/edit_black_24dp.svg" alt="edit" class="actions" onclick="update(this)">
+               </td>
+            </tr>
+      `
+      document.querySelector("#display").innerHTML = innerHTML;
+   }
+}

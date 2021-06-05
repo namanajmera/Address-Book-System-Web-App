@@ -48,7 +48,8 @@ body {
 }
 
 .form-content {
-   min-height: calc(100% - 80px);
+   min-height: calc(100% - 180px);
+   width: 100%;
    background-color: #f7f7f7;
    margin-bottom: 30px;
    display: flex;

@@ -1,3 +1,8 @@
+let site_properties = {
+   home_page: "../pages/address_book_home",
+   add_contact_page: "../pages/address_book_form"
+}
+
 const save = () => {
    try {
       let addressBookData = createAddressData();

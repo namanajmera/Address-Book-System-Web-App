@@ -146,14 +146,14 @@ td, th {
 }
 
 th {
-   background: #42515F 0% 0% no-repeat padding-box;
+   background: #2c81d1 0% 0% no-repeat padding-box;
    border-radius: 3px 3px 0px 0px;
    text-align: left;
    font: normal normal medium 18px/24px Roboto;
    letter-spacing: 0px;
    color: #FFFFFF;
    text-transform: uppercase;
-   border: 0px solid #dddddd;
+   /* border: 0px solid #dddddd; */
    padding: 20px;
    opacity: 1;
 }
@@ -165,9 +165,18 @@ tr:not(:first-child) {
    opacity: 1;
 }
 
+tr {
+   border: 2px solid #000000;
+   background-color: white;
+   padding: 12px 12px 12px 12px;
+   height: 20px;
+   border-radius: 3px;
+   box-shadow: 1px 1px black;
+}
+
 td {
    text-align: left;
-   font: normal normal normal 16px/21px Roboto;
+   font: normal normal 600 16px/19px Lato;
    letter-spacing: 0px;
    color: #3D3D3D;
    opacity: 1;
@@ -179,7 +188,7 @@ td:first-child {
 }
 
 td img {
-   margin-left: 20px;
+   margin-left: 10px;
 }
 
 .actions {

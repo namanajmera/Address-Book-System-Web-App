@@ -1,8 +1,14 @@
 let addressBookList;
+let site_properties = {
+   home_page: "../pages/address_book_home.html",
+   add_contact_page: "../pages/address_book_form.html"
+}
+
 window.addEventListener("DOMContentLoaded", (event) => {
    addressBookList = getAddressDateFromStorage();
    document.querySelector(".address-count").innerHTML = addressBookList.length;
    createInnerHTML();
+   localStorage.removeItem('editContact')
 })
 
 const getAddressDateFromStorage = () => {
@@ -55,4 +61,11 @@ const remove = (node) => {
    localStorage.setItem("AddressBookList", JSON.stringify(addressBookList))
    document.querySelector(".address-count").innerHTML = addressBookList.length;
    createInnerHTML();
+}
+
+const update = (node) => {
+   let addressBookData = addressBookList.find(contact => contact._id == node.id);
+   if (!addressBookData) return
+   localStorage.setItem('editContact', JSON.stringify(addressBookData))
+   window.location.replace(site_properties.add_contact_page)
 }

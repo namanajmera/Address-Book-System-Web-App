@@ -16,11 +16,27 @@ const save = (event) => {
          window.location.replace(site_properties.home_page)
       }
       else {
+         createOrUpdateAddressBookContact();
       }
    } catch (submitError) {
       alert(submitError);
       return;
    }
+}
+
+const createOrUpdateAddressBookContact = () => {
+   let postURL = site_properties.server_url
+   let methodCall = "POST"
+   if (isUpdate) {
+      methodCall = "PUT"
+      postURL = postURL + addressBookObj.id.toString();
+   }
+   makeServiceCall(methodCall, postURL, true, addressBookObj)
+      .then(responseText => {
+         window.location.replace(site_properties.home_page)
+      }).catch(error => {
+         throw error
+      })
 }
 
 const setAddressBookObject = () => {

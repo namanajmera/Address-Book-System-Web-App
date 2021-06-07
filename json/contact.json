@@ -1,13 +1,31 @@
 {
-   "address_book": [
-      {
-         "id": 1,
-         "_fullName": "Naman Ajmera",
-         "_phoneNumber": 8696696426,
-         "_address": "Ward No 9 Ajmera Bhawan Near Sabji Mandi Chaksu",
-         "_state": "Rajasthan",
-         "_city": "Jaipur",
-         "_zip": 303901
-      }
-   ]
+  "address_book": [
+    {
+      "id": "1",
+      "_fullName": "Naman Ajmera",
+      "_phoneNumber": "8696696426",
+      "_address": "Ward No 9 Ajmera Bhawan Near Sabji Mandi Near Thesil Chaksu ",
+      "_state": "Rajasthan",
+      "_city": "Jaipur",
+      "_zip": "303901"
+    },
+    {
+      "id": "4",
+      "_fullName": "Anuradha Dhuria",
+      "_phoneNumber": "9876543214",
+      "_address": "Home Sweet Home",
+      "_city": "Hyderabad",
+      "_state": "Telangana",
+      "_zip": "543654"
+    },
+    {
+      "id": "5",
+      "_fullName": "Elon Musks",
+      "_phoneNumber": "9857461230",
+      "_address": "Home Sweet Home",
+      "_city": "Delhi",
+      "_state": "Delhi",
+      "_zip": "54321"
+    }
+  ]
 }

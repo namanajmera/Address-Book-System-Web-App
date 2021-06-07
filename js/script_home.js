@@ -70,9 +70,18 @@ const remove = (node) => {
    const index = addressBookList.map(contact => contact.id)
       .indexOf(addressBookData.id);
    addressBookList.splice(index, 1);
-   localStorage.setItem("AddressBookList", JSON.stringify(addressBookList))
-   document.querySelector(".address-count").innerHTML = addressBookList.length;
-   createInnerHTML();
+   if (site_properties.use_local_storage.match("true")) {
+      localStorage.setItem("AddressBookList", JSON.stringify(addressBookList))
+      document.querySelector(".address-count").innerHTML = addressBookList.length;
+      createInnerHTML();
+   } else {
+      const deleteURL = site_properties.server_url + addressBookData.id.toString();
+      makeServiceCall("DELETE", deleteURL, true).then(responseText => {
+         createInnerHTML();
+      }).catch(error => {
+         console.log("Delete Error Status " + JSON.stringify(error))
+      })
+   }
 }
 
 const update = (node) => {

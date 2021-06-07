@@ -1,10 +1,6 @@
 let isUpdate = false;
 let addressBookObj = {};
 
-let site_properties = {
-   home_page: "../pages/address_book_home.html",
-   add_contact_page: "../pages/address_book_form.html"
-}
 
 window.addEventListener("DOMContentLoaded", () => {
    checkForUpdate();
@@ -15,8 +11,12 @@ const save = (event) => {
    event.stopPropagation();
    try {
       setAddressBookObject();
-      createAndUpdateStorage();
-      window.location.replace(site_properties.home_page)
+      if (site_properties.use_local_storage.match("true")) {
+         createAndUpdateStorage();
+         window.location.replace(site_properties.home_page)
+      }
+      else {
+      }
    } catch (submitError) {
       alert(submitError);
       return;
@@ -24,6 +24,7 @@ const save = (event) => {
 }
 
 const setAddressBookObject = () => {
+   if (!isUpdate) addressBookObj.id = createContactId();
    addressBookObj._fullName = document.querySelector("#name").value;
    addressBookObj._phoneNumber = document.querySelector("#number").value;
    addressBookObj._address = document.querySelector("#address").value;
@@ -32,18 +33,18 @@ const setAddressBookObject = () => {
    addressBookObj._zip = document.querySelector("#zip").value;
 }
 
-function createAndUpdateStorage(addressBookData) {
+function createAndUpdateStorage() {
    let addressBookList = JSON.parse(localStorage.getItem("AddressBookList"));
    if (addressBookList) {
-      let addressBookData = addressBookList.find(contact => contact._id == addressBookObj._id)
+      let addressBookData = addressBookList.find(contact => contact.id == addressBookObj.id)
       if (!addressBookData) {
-         addressBookList.push(createAddressData());
+         addressBookList.push(addressBookObj)
       } else {
-         const index = addressBookList.map(contact => contact._id).indexOf(addressBookData._id)
-         addressBookList.splice(index, 1, createAddressData(addressBookData._id))
+         const index = addressBookList.map(contact => contact.id).indexOf(addressBookData.id)
+         addressBookList.splice(index, 1, addressBookObj)
       }
    } else {
-      addressBookList = [createAddress()]
+      addressBookList = [addressBookObj]
    }
 
    alert("Store in Local Storage...!!")

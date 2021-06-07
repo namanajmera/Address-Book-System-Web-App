@@ -1,18 +1,33 @@
 let addressBookList;
-let site_properties = {
-   home_page: "../pages/address_book_home.html",
-   add_contact_page: "../pages/address_book_form.html"
+window.addEventListener("DOMContentLoaded", (event) => {
+   if (site_properties.use_local_storage.match("true")) {
+      getAddressDataFromStorage();
+   } else {
+      getAddressDataFromServer();
+   }
+})
+
+const getAddressDataFromStorage = () => {
+   addressBookList = localStorage.getItem("AddressBookList") ? JSON.parse(localStorage.getItem("AddressBookList")) : [];
+   processAddressBookDataResponse()
 }
 
-window.addEventListener("DOMContentLoaded", (event) => {
-   addressBookList = getAddressDateFromStorage();
+const processAddressBookDataResponse = () => {
    document.querySelector(".address-count").innerHTML = addressBookList.length;
    createInnerHTML();
    localStorage.removeItem('editContact')
-})
+}
 
-const getAddressDateFromStorage = () => {
-   return localStorage.getItem("AddressBookList") ? JSON.parse(localStorage.getItem("AddressBookList")) : [];
+const getAddressDataFromServer = () => {
+   makeServiceCall("GET", site_properties.server_url, true)
+      .then(responseText => {
+         addressBookList = JSON.parse(responseText);
+         processAddressBookDataResponse()
+      }).catch(error => {
+         console.log("GET Error Status: " + JSON.stringify(error))
+         addressBookList = []
+         processAddressBookDataResponse();
+      })
 }
 
 const createInnerHTML = () => {
@@ -40,8 +55,8 @@ const createInnerHTML = () => {
                <td>${contact._zip}</td>
                <td>${contact._phoneNumber}</td>
                <td>
-                  <img id="${contact._id}" src="/assets/delete_black_24dp.svg" alt="delete" class="actions" onclick="remove(this)">
-                  <img id="${contact._id}" src="/assets/edit_black_24dp.svg" alt="edit" class="actions" onclick="update(this)">
+                  <img id="${contact.id}" src="/assets/delete_black_24dp.svg" alt="delete" class="actions" onclick="remove(this)">
+                  <img id="${contact.id}" src="/assets/edit_black_24dp.svg" alt="edit" class="actions" onclick="update(this)">
                </td>
             </tr>
       `
@@ -49,14 +64,11 @@ const createInnerHTML = () => {
    }
 }
 
-
-
-
 const remove = (node) => {
-   let addressBookData = addressBookList.find(contact => contact._id == node.id)
+   let addressBookData = addressBookList.find(contact => contact.id == node.id)
    if (!addressBookData) return
-   const index = addressBookList.map(contact => contact._id)
-      .indexOf(addressBookData._id);
+   const index = addressBookList.map(contact => contact.id)
+      .indexOf(addressBookData.id);
    addressBookList.splice(index, 1);
    localStorage.setItem("AddressBookList", JSON.stringify(addressBookList))
    document.querySelector(".address-count").innerHTML = addressBookList.length;
@@ -64,7 +76,7 @@ const remove = (node) => {
 }
 
 const update = (node) => {
-   let addressBookData = addressBookList.find(contact => contact._id == node.id);
+   let addressBookData = addressBookList.find(contact => contact.id == node.id);
    if (!addressBookData) return
    localStorage.setItem('editContact', JSON.stringify(addressBookData))
    window.location.replace(site_properties.add_contact_page)
